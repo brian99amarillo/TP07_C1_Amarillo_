@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e3a79278eae0d4c831c6fe4273bf9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  bulletPrefab: {fileID: 7833270165136588221}
+  bulletPrefab: {fileID: 3796395329652974842, guid: 56b3241792d401c4ab3e49794c64b15d, type: 3}
   Gun: {fileID: 1457187142}
 --- !u!4 &421286491
 Transform:
@@ -571,6 +571,8 @@ GameObject:
   - component: {fileID: 1139310942}
   - component: {fileID: 1139310941}
   - component: {fileID: 1139310940}
+  - component: {fileID: 1139310944}
+  - component: {fileID: 1139310943}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -665,6 +667,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1139310943
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139310939}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1139310944
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139310939}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.21133333}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.28866667}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1371490460
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,11 +812,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2900503046884146382, guid: 56b3241792d401c4ab3e49794c64b15d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7598
+      value: -3.09
       objectReference: {fileID: 0}
     - target: {fileID: 2900503046884146382, guid: 56b3241792d401c4ab3e49794c64b15d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9098
+      value: -1.27
       objectReference: {fileID: 0}
     - target: {fileID: 2900503046884146382, guid: 56b3241792d401c4ab3e49794c64b15d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -779,26 +854,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet
       objectReference: {fileID: 0}
-    - target: {fileID: 2988640659627184311, guid: 56b3241792d401c4ab3e49794c64b15d, type: 3}
-      propertyPath: m_TagString
-      value: Bullet
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56b3241792d401c4ab3e49794c64b15d, type: 3}
---- !u!114 &7833270165136588221 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3796395329652974842, guid: 56b3241792d401c4ab3e49794c64b15d, type: 3}
-  m_PrefabInstance: {fileID: 7833270165136588220}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f8af1423fba93941afa826ef216fc81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
