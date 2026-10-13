@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 016c08bddb4395f4ab3c425a6e9c6de9
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 130827
+  packageName: Dungeon Crawler 2D Art Pack
+  packageVersion: 2.0
+  assetPath: Assets/TextMesh Pro/Resources/Shaders/TMPro_Properties.cginc
+  uploadId: 1008408
