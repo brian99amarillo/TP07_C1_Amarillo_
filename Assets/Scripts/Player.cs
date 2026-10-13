@@ -6,9 +6,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform Gun;
     [SerializeField] private Animator animator;
     [SerializeField] private LayerMask ground;
+    [SerializeField] private SettingsPlayerSO settingsPlayer;
     private Rigidbody2D rb;
-    private float speed = 5f;
-    private float jumpForce = 5f;
     private float life = 100f;
     private float LongLine = 1f;
     private bool isWalking = false;
@@ -27,13 +26,13 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, settingsPlayer.JumpForce), ForceMode2D.Impulse);
             animator.SetTrigger("Jump");
         }
 
         if (Input.GetKey(KeyCode.A)) // Si la tecla A está presionada el objeto se mueve hacia la izquierda
         {
-            rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(-settingsPlayer.Speed, rb.linearVelocity.y);
             transform.right = Vector2.left;
             isWalking = isGrounded;
             animator.SetBool("Walk", isWalking);
@@ -41,7 +40,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D)) // Si la tecla D está presionada el objeto se mueve hacia la derecha
         {
-            rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(settingsPlayer.Speed, rb.linearVelocity.y);
             transform.right = Vector2.right;
             isWalking = isGrounded;
             animator.SetBool("Walk", isWalking);
