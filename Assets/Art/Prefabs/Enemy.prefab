@@ -4824,8 +4824,8 @@ ParticleSystemRenderer:
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-  m_UseCustomVertexStreams: 0
-  m_VertexStreams: 00010304
+  m_UseCustomVertexStreams: 1
+  m_VertexStreams: 0001020304
   m_UseCustomTrailVertexStreams: 0
   m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
@@ -4921,6 +4921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8900913712483391132}
   - component: {fileID: 6026764553632495753}
+  - component: {fileID: 2063360090187433655}
   - component: {fileID: 7263761207906363238}
   - component: {fileID: 3106381443667565292}
   m_Layer: 0
@@ -4960,10 +4961,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf226a9be67525f4ba6724e2111b6b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  settingsEnemy: {fileID: 11400000, guid: b09f37dd1389cd046a28d5e66e43a809, type: 2}
   bulletPrefab: {fileID: 3796395329652974842, guid: 56b3241792d401c4ab3e49794c64b15d, type: 3}
-  animator: {fileID: 0}
+  animator: {fileID: 1749925088215176832}
   dieEnemy: {fileID: 6263765080344011436}
   image: {fileID: 1174096660676014154}
+--- !u!114 &2063360090187433655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909588080009340573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14737f6067332d4f98b47d165c90df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  animator: {fileID: 1749925088215176832}
+  setttingsEnemy: {fileID: 11400000, guid: b09f37dd1389cd046a28d5e66e43a809, type: 2}
 --- !u!61 &7263761207906363238
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4998,7 +5014,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21133333}
+  m_Offset: {x: -0.030360699, y: 0.0696497}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28866667}
@@ -5008,7 +5024,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0607214, y: 1.0607216}
   m_EdgeRadius: 0
 --- !u!50 &3106381443667565292
 Rigidbody2D:
@@ -5200,7 +5216,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.31, y: 2.46}
+  m_Size: {x: 1.22, y: 1.235}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

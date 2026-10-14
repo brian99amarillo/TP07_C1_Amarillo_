@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private Bullet bulletPrefab;
@@ -8,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask ground;
     [SerializeField] private SettingsPlayerSO settingsPlayer;
     private Rigidbody2D rb;
-    private float life = 100f;
+    private float life;
     private float LongLine = 1f;
     private bool isWalking = false;
     private bool isGrounded = false;
@@ -18,6 +19,11 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        life = settingsPlayer.Life;
+        animator.SetBool("isGrounded", true);
+    }
     private void Update()
     {
 
@@ -59,5 +65,43 @@ public class Player : MonoBehaviour
             Bullet bullet = Instantiate(bulletPrefab, Gun.position, Quaternion.identity);
             bullet.Shoot((int)Mathf.Sign(Gun.right.x));
         }
+    }
+
+    private void Damage(Collider2D collision)
+    {
+        life -= collision.GetComponent<BulletEnemy>().Damage;
+        if (life <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void DamageCollision(Collider2D collision)
+    {
+        life -= collision.GetComponent<SetttingsEnemySO>().Damage;
+        if (life <= 0)
+        {
+            Die();
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            DamageCollision(collision.collider);
+        }
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            Damage(collision);
+        }
+    }
+
+    private void Die()
+    {
+      Debug.Log("Player has died");
     }
 }
