@@ -10,6 +10,8 @@ public class FlyingEnemyMovements : MonoBehaviour
     [SerializeField] private Transform Gun;
     [SerializeField] private Animator animator;
     [SerializeField] private float waitTime = 0.8f;
+    [SerializeField] private float HeightMin = 2.5f;
+    [SerializeField] private float HeightMax = 7f;
     private bool isWaiting = false;
     bool hasShot = false;
 
@@ -33,12 +35,12 @@ public class FlyingEnemyMovements : MonoBehaviour
     {
         if (isWaiting) return;
 
-        if (transform.position.y > 3.5f && !hasShot)
+        if (transform.position.y > HeightMax && !hasShot)
         {
             StartCoroutine(WaitAndShoot());
         }
 
-        if (transform.position.y < -2.5f)
+        if (transform.position.y < HeightMin)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, setttingsEnemy.Speed);
             hasShot = false;

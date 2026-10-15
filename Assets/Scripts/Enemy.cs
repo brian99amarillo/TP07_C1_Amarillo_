@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private ParticleSystem dieEnemy;
     [SerializeField] private Image image;
+
+    public SettingsEnemySO Settings { get { return settingsEnemy; } }
     private float life = 0f;
 
     private void Start()

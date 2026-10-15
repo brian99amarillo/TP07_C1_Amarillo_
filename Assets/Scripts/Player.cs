@@ -72,6 +72,7 @@ public class Player : MonoBehaviour
 
     private void Damage(Collider2D collision)
     {
+        
         life -= collision.GetComponent<BulletEnemy>().Damage;
         image.fillAmount = life / settingsPlayer.Life;
         if (life <= 0)
@@ -82,7 +83,8 @@ public class Player : MonoBehaviour
 
     private void DamageCollision(Collider2D collision)
     {
-        life -= collision.GetComponent<SettingsEnemySO>().Damage;
+        Enemy enemy = collision.GetComponent<Enemy>();
+        life -= enemy.Settings.Damage;
         image.fillAmount = life / settingsPlayer.Life;
         if (life <= 0)
         {
@@ -105,6 +107,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Heal(float amount)
+    {
+        life = Mathf.Min(life + amount, settingsPlayer.Life);
+        UIHealtPlayer.Instance.UpdateHealthBar(life, settingsPlayer.Life);
+    }
     private void Die()
     {
       Debug.Log("Player has died");
