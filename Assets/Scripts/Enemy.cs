@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private SetttingsEnemySO settingsEnemy;
+    [SerializeField] private SettingsEnemySO settingsEnemy;
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Animator animator;
     [SerializeField] private ParticleSystem dieEnemy;

@@ -4,7 +4,7 @@ using System.Collections;
 public class FlyingEnemyMovements : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private SetttingsEnemySO setttingsEnemy;
+    [SerializeField] private SettingsEnemySO setttingsEnemy;
     [SerializeField] private BulletEnemy bulletEnemy;
     [SerializeField] private BulletEnemy bulletPrefab;
     [SerializeField] private Transform Gun;

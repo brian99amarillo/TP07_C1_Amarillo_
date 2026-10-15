@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Player : MonoBehaviour
@@ -8,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private LayerMask ground;
     [SerializeField] private SettingsPlayerSO settingsPlayer;
+    [SerializeField] private GameObject CanvasGameOver;
+    [SerializeField] private Image image;
     private Rigidbody2D rb;
     private float life;
     private float LongLine = 1f;
@@ -70,6 +73,7 @@ public class Player : MonoBehaviour
     private void Damage(Collider2D collision)
     {
         life -= collision.GetComponent<BulletEnemy>().Damage;
+        image.fillAmount = life / settingsPlayer.Life;
         if (life <= 0)
         {
             Die();
@@ -78,7 +82,8 @@ public class Player : MonoBehaviour
 
     private void DamageCollision(Collider2D collision)
     {
-        life -= collision.GetComponent<SetttingsEnemySO>().Damage;
+        life -= collision.GetComponent<SettingsEnemySO>().Damage;
+        image.fillAmount = life / settingsPlayer.Life;
         if (life <= 0)
         {
             Die();
@@ -103,5 +108,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
       Debug.Log("Player has died");
+      CanvasGameOver.SetActive(true);
+      Time.timeScale = 0f;
     }
 }

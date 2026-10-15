@@ -4980,6 +4980,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   animator: {fileID: 1749925088215176832}
   setttingsEnemy: {fileID: 11400000, guid: b09f37dd1389cd046a28d5e66e43a809, type: 2}
+  idleTime: 4
+  runTime: 3
+  attackTime: 2
 --- !u!61 &7263761207906363238
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5052,7 +5055,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &4094376818342573508
 GameObject:
   m_ObjectHideFlags: 0

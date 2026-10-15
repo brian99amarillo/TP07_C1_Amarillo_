@@ -4,7 +4,7 @@ using UnityEngine;
 public class SettingsPlayerSO : ScriptableObject
 {
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float life = 100f;
 
     public float Speed { get { return speed; } }

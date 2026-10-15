@@ -4,10 +4,11 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private SetttingsEnemySO setttingsEnemy;
+    [SerializeField] private SettingsEnemySO setttingsEnemy;
     [SerializeField] private float idleTime = 0f;
     [SerializeField] private float runTime = 0f;
     [SerializeField] private float attackTime = 0f;
+    public SettingsEnemySO Settings { get { return setttingsEnemy; } }
     private Rigidbody2D rb;
 
     void Awake()
