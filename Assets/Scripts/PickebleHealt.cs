@@ -9,6 +9,7 @@ public class PickebleHealt : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.GetComponent<Player>().Heal(healthValue);
+            AudioManager.Instance.PlayerHealt();
             Destroy(gameObject);
         }
     }

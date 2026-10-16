@@ -10,6 +10,7 @@ public class PickableCoin : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {   
             value++;
+            AudioManager.Instance.PickCoin();
             UIcoinCounter.Instance.UpdateCoinCounter(value);
             Destroy(gameObject);
         }

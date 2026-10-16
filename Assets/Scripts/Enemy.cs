@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         dieEnemy.transform.SetParent(null);   // la particula se separa del enemigo para que no se destruya con él
+        AudioManager.Instance.EnemyDie();
         dieEnemy.Play();
         Destroy(dieEnemy.gameObject, 1f);     // la particula se borra sola cuando termina el efecto
         Destroy(gameObject);                  // destruye el enemigo

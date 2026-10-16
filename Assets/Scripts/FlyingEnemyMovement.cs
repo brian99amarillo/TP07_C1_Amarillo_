@@ -56,6 +56,7 @@ public class FlyingEnemyMovements : MonoBehaviour
 
         BulletEnemy bullet = Instantiate(bulletPrefab, Gun.position, Quaternion.identity);
         bullet.Launch(Vector2.down);
+        AudioManager.Instance.EnemyShoot();
 
         yield return new WaitForSeconds(waitTime);
         animator.SetBool("isIdle", true);

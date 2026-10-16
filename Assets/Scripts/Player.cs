@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, settingsPlayer.JumpForce), ForceMode2D.Impulse);
             animator.SetTrigger("Jump");
+            AudioManager.Instance.PlayerJump();
         }
 
         if (Input.GetKey(KeyCode.A)) // Si la tecla A está presionada el objeto se mueve hacia la izquierda
@@ -67,6 +68,8 @@ public class Player : MonoBehaviour
         {
             Bullet bullet = Instantiate(bulletPrefab, Gun.position, Quaternion.identity);
             bullet.Shoot((int)Mathf.Sign(Gun.right.x));
+            AudioManager.Instance.PlayerShoot();
+
         }
     }
 
@@ -74,6 +77,7 @@ public class Player : MonoBehaviour
     {
         
         life -= collision.GetComponent<BulletEnemy>().Damage;
+        AudioManager.Instance.PlayerDamege();
         image.fillAmount = life / settingsPlayer.Life;
         if (life <= 0)
         {
@@ -84,6 +88,7 @@ public class Player : MonoBehaviour
     private void DamageCollision(Collider2D collision)
     {
         Enemy enemy = collision.GetComponent<Enemy>();
+        AudioManager.Instance.PlayerDamege();
         life -= enemy.Settings.Damage;
         image.fillAmount = life / settingsPlayer.Life;
         if (life <= 0)
@@ -116,6 +121,7 @@ public class Player : MonoBehaviour
     {
       Debug.Log("Player has died");
       CanvasGameOver.SetActive(true);
+      AudioManager.Instance.GameOver();
       Time.timeScale = 0f;
     }
 }
