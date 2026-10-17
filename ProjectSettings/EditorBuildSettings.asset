@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Dungeon Crawler 2D Art Pack/Scenes/SeventhChamber.unity
-    guid: 2200020ddd4a7ea449b592a3b85ca358
+    path: Assets/Scenes/MainMenu.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Dungeon Crawler 2D Art Pack/Scenes/Legacy/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Gameplay.unity
+    guid: 4c9bbfa3545497b4192126a1a317d2c0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
