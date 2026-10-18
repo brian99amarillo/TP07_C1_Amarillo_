@@ -9,6 +9,8 @@ public class FlyingEnemyMovements : MonoBehaviour
     [SerializeField] private BulletEnemy bulletPrefab;
     [SerializeField] private Transform Gun;
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource sfx;
+    [SerializeField] private AudioClip enemyShoot;
     [SerializeField] private float waitTime = 0.8f;
     [SerializeField] private float HeightMin = 2.5f;
     [SerializeField] private float HeightMax = 7f;
@@ -56,12 +58,13 @@ public class FlyingEnemyMovements : MonoBehaviour
 
         BulletEnemy bullet = Instantiate(bulletPrefab, Gun.position, Quaternion.identity);
         bullet.Launch(Vector2.down);
-        AudioManager.Instance.EnemyShoot();
+        EnemyShoot();
 
         yield return new WaitForSeconds(waitTime);
         animator.SetBool("isIdle", true);
         rb.linearVelocity = new Vector2(rb.linearVelocityX, -setttingsEnemy.Speed);
         isWaiting = false;
-
+               
     }
+    public void EnemyShoot() => sfx.PlayOneShot(enemyShoot);
 }

@@ -50,7 +50,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8505497569749696764}
   bulletSpeed: 5
   lifeTime: 2
-  damage: 25
+  damage: 10
 --- !u!212 &1465324200951145486
 SpriteRenderer:
   serializedVersion: 2

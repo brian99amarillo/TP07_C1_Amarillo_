@@ -13,9 +13,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Image image;
     private Rigidbody2D rb;
     private float life;
-    private float LongLine = 1f;
+    [SerializeField] private float LongLine = 1f;
     private bool isWalking = false;
     private bool isGrounded = false;
+    private Vector2 starPos;
 
     private void Awake()
     {
@@ -26,50 +27,53 @@ public class Player : MonoBehaviour
     {
         life = settingsPlayer.Life;
         animator.SetBool("isGrounded", true);
+        starPos = settingsPlayer.StartPosition;
+        transform.position = starPos;
     }
     private void Update()
     {
-
-        isGrounded = Physics2D.OverlapPoint(new Vector2(transform.position.x, transform.position.y + (LongLine * -1)), ground); // Verifica si el objeto está tocando el suelo
-        animator.SetBool("isGrounded", isGrounded);
-
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Time.timeScale == 1)
         {
-            rb.AddForce(new Vector2(0, settingsPlayer.JumpForce), ForceMode2D.Impulse);
-            animator.SetTrigger("Jump");
-            AudioManager.Instance.PlayerJump();
-        }
+            isGrounded = Physics2D.OverlapPoint(new Vector2(transform.position.x, transform.position.y + (LongLine * -1)), ground); // Verifica si el objeto está tocando el suelo
+            animator.SetBool("isGrounded", isGrounded);
 
-        if (Input.GetKey(KeyCode.A)) // Si la tecla A está presionada el objeto se mueve hacia la izquierda
-        {
-            rb.linearVelocity = new Vector2(-settingsPlayer.Speed, rb.linearVelocity.y);
-            transform.right = Vector2.left;
-            isWalking = isGrounded;
-            animator.SetBool("Walk", isWalking);
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                rb.AddForce(new Vector2(0, settingsPlayer.JumpForce), ForceMode2D.Impulse);
+                animator.SetTrigger("Jump");
+                AudioManager.Instance.PlayerJump();
+            }
 
-        }
-        if (Input.GetKey(KeyCode.D)) // Si la tecla D está presionada el objeto se mueve hacia la derecha
-        {
-            rb.linearVelocity = new Vector2(settingsPlayer.Speed, rb.linearVelocity.y);
-            transform.right = Vector2.right;
-            isWalking = isGrounded;
-            animator.SetBool("Walk", isWalking);
-        }
+            if (Input.GetKey(KeyCode.A)) // Si la tecla A está presionada el objeto se mueve hacia la izquierda
+            {
+                rb.linearVelocity = new Vector2(-settingsPlayer.Speed, rb.linearVelocity.y);
+                transform.right = Vector2.left;
+                isWalking = isGrounded;
+                animator.SetBool("Walk", isWalking);
+
+            }
+            if (Input.GetKey(KeyCode.D)) // Si la tecla D está presionada el objeto se mueve hacia la derecha
+            {
+                rb.linearVelocity = new Vector2(settingsPlayer.Speed, rb.linearVelocity.y);
+                transform.right = Vector2.right;
+                isWalking = isGrounded;
+                animator.SetBool("Walk", isWalking);
+            }
 
 
-        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-        {
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            isWalking = false;
-            animator.SetBool("Walk", isWalking);
-        }
-            
-        if (Input.GetMouseButtonDown(0))
-        {
-            Bullet bullet = Instantiate(bulletPrefab, Gun.position, Quaternion.identity);
-            bullet.Shoot((int)Mathf.Sign(Gun.right.x));
-            AudioManager.Instance.PlayerShoot();
+            if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+            {
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+                isWalking = false;
+                animator.SetBool("Walk", isWalking);
+            }
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                Bullet bullet = Instantiate(bulletPrefab, Gun.position, Quaternion.identity);
+                bullet.Shoot((int)Mathf.Sign(Gun.right.x));
+                AudioManager.Instance.PlayerShoot();
+            }
         }
     }
 
@@ -123,5 +127,13 @@ public class Player : MonoBehaviour
       CanvasGameOver.SetActive(true);
       AudioManager.Instance.GameOver();
       Time.timeScale = 0f;
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Vector2 point = new Vector2(transform.position.x, transform.position.y - LongLine);
+        Gizmos.DrawWireSphere(point, 0.05f);
     }
 }

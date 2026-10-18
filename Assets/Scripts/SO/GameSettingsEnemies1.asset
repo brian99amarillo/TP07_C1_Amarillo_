@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: GameSettingsEnemies1
   m_EditorClassIdentifier: Assembly-CSharp::SetttingsEnemySO
   maxLife: 100
+  damage: 10
+  speed: 5

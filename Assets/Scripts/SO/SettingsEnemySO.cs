@@ -4,7 +4,7 @@ using UnityEngine;
 public class SettingsEnemySO : ScriptableObject
 {
     [SerializeField] private float maxLife = 100f;
-    [SerializeField] private float damage = 25f;
+    [SerializeField] private float damage = 10f;
     [SerializeField] private float speed = 5f;
 
     public float MaxLife { get { return maxLife; } }

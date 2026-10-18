@@ -5,7 +5,7 @@ public class BulletEnemy : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float lifeTime = 2f;
-    [SerializeField] private float damage = 25f;
+    [SerializeField] private float damage = 10f;
 
     public float Damage { get { return damage; } }
 
