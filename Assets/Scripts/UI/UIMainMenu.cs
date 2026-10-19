@@ -23,6 +23,9 @@ public class UIMainMenu : MonoBehaviour
         btnSettings.onClick.AddListener(OnSettingsButtonClicked);
         btnCreditts.onClick.AddListener(OnCredittsButtonClicked);
         btnExit.onClick.AddListener(OnExitButtonClicked);
+        #if UNITY_WEBGL && !UNITY_EDITOR
+            btnExit.gameObject.SetActive(false);
+        #endif
     }
 
     private void Start()

@@ -25,9 +25,9 @@ public class UIMenuPause : MonoBehaviour
         btnCredits.onClick.AddListener(OnCreditsButtonClicked);
         btnExit.onClick.AddListener(OnExitButtonClicked);
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-    btnExit.gameObject.SetActive(false);
-#endif
+        #if UNITY_WEBGL && !UNITY_EDITOR
+            btnExit.gameObject.SetActive(false);
+        #endif
     }
 
     private void Start()
