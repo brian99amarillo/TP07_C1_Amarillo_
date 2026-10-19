@@ -9,11 +9,13 @@ public class SettingsPlayerSO : ScriptableObject
     [SerializeField] private float startPositionx = -9f;
     [SerializeField] private float startPositiony = 1.25f;
     [SerializeField] private Vector2 startPosition;
+    [SerializeField] private float fallDamage = 20f;
     public Vector2 StartPosition => startPosition;
 
     public float Speed { get { return speed; } }
     public float JumpForce { get { return jumpForce; } }
     public float Life { get { return life; } }
+    public float FallDamage { get { return fallDamage; } }
 
     private void OnEnable()
     {

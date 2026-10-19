@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
-{   
+{
     public static AudioManager Instance { get; private set; }
     [SerializeField] private AudioSource background;
     [SerializeField] private AudioSource sfx;
@@ -15,19 +15,19 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip enemyDie;
     [SerializeField] private AudioClip musicGameplay;
     [SerializeField] private AudioClip musicPause;
-    [SerializeField] private AudioClip win;
+    [SerializeField] private AudioClip musicWin;
     private void Awake()
     {
-        Instance = this; 
+        Instance = this;
     }
-    public void PlayerShoot()=>sfx.PlayOneShot(playerShoot);
-    public void PickCoin()=>sfx.PlayOneShot(coinPick);
-    public void PlayerJump()=>sfx.PlayOneShot(playerJump);
+    public void PlayerShoot() => sfx.PlayOneShot(playerShoot);
+    public void PickCoin() => sfx.PlayOneShot(coinPick);
+    public void PlayerJump() => sfx.PlayOneShot(playerJump);
     public void PlayerHealt() => sfx.PlayOneShot(healt);
     public void PlayerDamege() => sfx.PlayOneShot(playerDamage);
     public void EnemyDie() => sfx.PlayOneShot(enemyDie);
     public void GameOver() => ui.PlayOneShot(gameOver);
-    public void Win() => ui.PlayOneShot(win);
+    public void Win() => ui.PlayOneShot(musicWin);
 
     public void ActiveMusicGameplay()
     {
@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
     {
         background.clip = musicPause;
         background.Play();
-       
+
     }
     public void PauseMusicGameplay()
     {
@@ -54,5 +54,11 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         ActiveMusicGameplay();
+    }
+
+    public void ActiveMusicWin()
+    {
+        background.Stop();
+        ui.PlayOneShot(musicWin);
     }
 }

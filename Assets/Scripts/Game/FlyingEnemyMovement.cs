@@ -12,8 +12,8 @@ public class FlyingEnemyMovements : MonoBehaviour
     [SerializeField] private AudioSource sfx;
     [SerializeField] private AudioClip enemyShoot;
     [SerializeField] private float waitTime = 0.8f;
-    [SerializeField] private float HeightMin = 2.5f;
-    [SerializeField] private float HeightMax = 7f;
+    [SerializeField] private float HeightMin = 3f;
+    [SerializeField] private float HeightMax = 10f;
     private bool isWaiting = false;
     bool hasShot = false;
 

@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class UIRetryGame : MonoBehaviour
 {
     [SerializeField] private Button btnRetry;
-    [SerializeField] private GameObject panelGameOver;
-    //[SerializeField] private ControllerMusic controllerMusic;
+    [SerializeField] private string sceneName = "Gameplay";
 
     private void Awake()
     {
@@ -20,9 +19,7 @@ public class UIRetryGame : MonoBehaviour
 
     private void OnRetryButtonClicked()
     {
-        panelGameOver.SetActive(false);
-        SceneManager.LoadScene("Game");
         Time.timeScale = 1f;
-
+        SceneManager.LoadScene(sceneName);
     }
 }

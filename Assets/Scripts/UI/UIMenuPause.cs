@@ -13,6 +13,7 @@ public class UIMenuPause : MonoBehaviour
     [SerializeField] private GameObject CreditsPanel;
     [SerializeField] private GameObject Game;
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private GameObject gameOverPanel;
     private bool isPause = false;
     public bool IsPause { get { return isPause; } }
 
@@ -36,6 +37,8 @@ public class UIMenuPause : MonoBehaviour
 
     private void Update()
     {
+        if (UIWinner.Instance.IsWinner || gameOverPanel.activeInHierarchy) return;
+
         if ((Input.GetKeyDown(KeyCode.Escape)) || Input.GetKeyDown(KeyCode.P))  // Pausa el juego al presionar la tecla Escape o P, y abre el menu de pausa
         {   
             isPause=!isPause;

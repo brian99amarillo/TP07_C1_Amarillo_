@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class UIScore : MonoBehaviour
@@ -10,13 +9,15 @@ public class UIScore : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
 
     public TextMeshProUGUI ScoreText { get { return scoreText; } }
+    public float Score { get { return score; } }
+
     private void Awake()
     {
         Instance = this;
     }
     private void Update()
     {
-        score += Time.deltaTime* multoplicationStore;
+        score += Time.deltaTime * multoplicationStore;
         scoreText.text = Mathf.Round(score).ToString();
     }
 }

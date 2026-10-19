@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject CanvasGameOver;
     [SerializeField] private GameObject CanvasWinner;
     [SerializeField] private Image image;
+    [SerializeField] private float fallLimitY = -2f;
+    private Vector2 lastGroundPosition;
     private Rigidbody2D rb;
     private float life;
     [SerializeField] private float LongLine = 1f;
@@ -31,12 +32,23 @@ public class Player : MonoBehaviour
         animator.SetBool("isGrounded", true);
         starPos = settingsPlayer.StartPosition;
         transform.position = starPos;
+        lastGroundPosition = starPos;
     }
     private void Update()
     {
         if (Time.timeScale == 1)
         {
             isGrounded = Physics2D.OverlapPoint(new Vector2(transform.position.x, transform.position.y + (LongLine * -1)), ground); // Verifica si el objeto está tocando el suelo
+            if (isGrounded)
+            {
+                lastGroundPosition = transform.position;
+            }
+
+            if (transform.position.y < fallLimitY)
+            {
+                ReturnToLastGround();
+            }
+
             animator.SetBool("isGrounded", isGrounded);
 
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -118,6 +130,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {
+            if (PowerUpInvisibility.activedInvincibility) return;
             Damage(collision);
         }
     }
@@ -126,6 +139,21 @@ public class Player : MonoBehaviour
     {
         life = Mathf.Min(life + amount, settingsPlayer.Life);
         UIHealtPlayer.Instance.UpdateHealthBar(life, settingsPlayer.Life);
+    }
+    private void ReturnToLastGround()
+    {
+        life -= settingsPlayer.FallDamage;
+        AudioManager.Instance.PlayerDamege();
+        image.fillAmount = life / settingsPlayer.Life;
+
+        if (life <= 0)
+        {
+            Die();
+            return;
+        }
+
+        rb.linearVelocity = Vector2.zero;
+        transform.position = lastGroundPosition;
     }
     private void Die()
     {
@@ -137,11 +165,7 @@ public class Player : MonoBehaviour
 
     private void Winner()
     {
-        CanvasWinner.SetActive(true);
-        AudioManager.Instance.PauseMusicGameplay();
-        AudioManager.Instance.Win();
         UIWinner.Instance.ScoreWinner();
-        Time.timeScale = 0f;
     }
 
     private void OnDrawGizmosSelected()
