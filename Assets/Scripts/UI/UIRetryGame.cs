@@ -20,7 +20,6 @@ public class UIRetryGame : MonoBehaviour
 
     private void OnRetryButtonClicked()
     {
-        //PowerUpLifeExtra.counter = 1;
         panelGameOver.SetActive(false);
         SceneManager.LoadScene("Game");
         Time.timeScale = 1f;

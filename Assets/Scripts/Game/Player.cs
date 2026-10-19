@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask ground;
     [SerializeField] private SettingsPlayerSO settingsPlayer;
     [SerializeField] private GameObject CanvasGameOver;
+    [SerializeField] private GameObject CanvasWinner;
     [SerializeField] private Image image;
     private Rigidbody2D rb;
     private float life;
@@ -106,6 +108,10 @@ public class Player : MonoBehaviour
         {
             DamageCollision(collision.collider);
         }
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            Winner();
+        }
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -123,12 +129,20 @@ public class Player : MonoBehaviour
     }
     private void Die()
     {
-      Debug.Log("Player has died");
       CanvasGameOver.SetActive(true);
+      AudioManager.Instance.PauseMusicGameplay();
       AudioManager.Instance.GameOver();
       Time.timeScale = 0f;
     }
 
+    private void Winner()
+    {
+        CanvasWinner.SetActive(true);
+        AudioManager.Instance.PauseMusicGameplay();
+        AudioManager.Instance.Win();
+        UIWinner.Instance.ScoreWinner();
+        Time.timeScale = 0f;
+    }
 
     private void OnDrawGizmosSelected()
     {

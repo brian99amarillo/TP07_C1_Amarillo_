@@ -3,18 +3,16 @@ using UnityEngine.UI;
 
 public class UIMenuPause : MonoBehaviour
 {
-
-    [Header("Menu Pause Buttons")]
     [SerializeField] private Button btnContinue;      // Boton de continuar para volver al juego desde el menu de pausa
     [SerializeField] private Button btnSettings;    // Boton de opciones para abrir el panel de opciones desde el menu de pausa
     [SerializeField] private Button btnCredits;    // Boton de creditos para abrir el panel de creditos desde el menu de pausa
     [SerializeField] private Button btnExit;        // Boton de salir del juego desde el menu de pausa
 
-    [Header("Panels & Scenes")]
     [SerializeField] private GameObject Pause;
     [SerializeField] private GameObject SettingsPanel;
     [SerializeField] private GameObject CreditsPanel;
     [SerializeField] private GameObject Game;
+    [SerializeField] private AudioManager audioManager;
     private bool isPause = false;
     public bool IsPause { get { return isPause; } }
 
@@ -56,6 +54,8 @@ public class UIMenuPause : MonoBehaviour
     {
         Game.SetActive(false);
         Pause.SetActive(true);
+        audioManager.PauseMusicGameplay();
+        audioManager.ActiveMusicMenuPause();
         Time.timeScale = 0f; // Detiene el tiempo
     }
 
@@ -66,6 +66,8 @@ public class UIMenuPause : MonoBehaviour
             SettingsPanel.SetActive(false);
             CreditsPanel.SetActive(false);
         }
+        audioManager.StopMusicMenuPause();
+        audioManager.ActiveMusicGameplay();
         Pause.SetActive(false);
         Game.SetActive(true);
         Time.timeScale = 1f; // Reanuda el tiempo

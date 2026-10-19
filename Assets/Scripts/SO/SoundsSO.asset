@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143229aeef5a2014baba0942e74e1d3d, type: 3}
   m_Name: SoundsSO
   m_EditorClassIdentifier: Assembly-CSharp::SoundsSO
+  master: 0.5
+  background: 0.3
+  sfx: 1
+  ui: 1

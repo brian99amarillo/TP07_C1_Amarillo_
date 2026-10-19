@@ -13,7 +13,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip gameOver;
     [SerializeField] private AudioClip playerDamage;
     [SerializeField] private AudioClip enemyDie;
-    
+    [SerializeField] private AudioClip musicGameplay;
+    [SerializeField] private AudioClip musicPause;
+    [SerializeField] private AudioClip win;
     private void Awake()
     {
         Instance = this; 
@@ -25,8 +27,32 @@ public class AudioManager : MonoBehaviour
     public void PlayerDamege() => sfx.PlayOneShot(playerDamage);
     public void EnemyDie() => sfx.PlayOneShot(enemyDie);
     public void GameOver() => ui.PlayOneShot(gameOver);
+    public void Win() => ui.PlayOneShot(win);
+
+    public void ActiveMusicGameplay()
+    {
+        background.clip = musicGameplay;
+        background.Play();
+    }
+    public void ActiveMusicMenuPause()
+    {
+        background.clip = musicPause;
+        background.Play();
+       
+    }
+    public void PauseMusicGameplay()
+    {
+        background.Pause();
+    }
+
+    public void StopMusicMenuPause()
+    {
+        background.Stop();
+    }
 
 
-
-
+    private void Start()
+    {
+        ActiveMusicGameplay();
+    }
 }

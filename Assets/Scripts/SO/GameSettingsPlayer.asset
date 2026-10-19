@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameSettingsPlayer
   m_EditorClassIdentifier: Assembly-CSharp::SettingsPlayerSO
   speed: 5
-  jumpForce: 5
+  jumpForce: 6
   life: 100
   startPositionx: -9
   startPositiony: 1.25

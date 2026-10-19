@@ -4,10 +4,10 @@ using UnityEngine;
 public class SoundsSO : ScriptableObject
 {
 
-    private float master = 1f;
-    private float background = 0.8f;
-    private float sfx = 1f;
-    private float ui = 1f;
+   [SerializeField] private float master = 0.5f;
+   [SerializeField] private float background = 0.5f;
+   [SerializeField] private float sfx = 1f;
+   [SerializeField] private float ui = 1f;
 
     public float Master { get { return master; }}
     public float Background { get { return background; } }
